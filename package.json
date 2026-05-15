@@ -1,0 +1,52 @@
+{
+  "name": "@bytesbrains/pi-loki-gate",
+  "version": "1.0.0",
+  "description": "Loki log gateway for pi agents — query Grafana Loki for container/job/worker logs from the wrok.in AI Factory.",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "loki",
+    "grafana",
+    "logs",
+    "logging",
+    "ai-factory"
+  ],
+  "author": "nandal <nandal@users.noreply.github.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandal/pi-ext.git",
+    "directory": "loki-gate"
+  },
+  "homepage": "https://github.com/nandal/pi-ext/tree/main/loki-gate",
+  "bugs": {
+    "url": "https://github.com/nandal/pi-ext/issues"
+  },
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "AGENTS.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vitest": "^2.1.9"
+  }
+}
