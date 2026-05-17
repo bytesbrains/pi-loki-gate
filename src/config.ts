@@ -21,7 +21,10 @@ export function loadConfig(cwd: string): LokiConfig {
     }
     return {
       lokiUrl: (result["lokiUrl"] as string) || DEFAULT_CONFIG.lokiUrl,
-      defaultLimit: parseInt(result["defaultLimit"] as string) || DEFAULT_CONFIG.defaultLimit,
+      const defaultLimit = parseInt(result["defaultLimit"] as string);
+    return {
+      lokiUrl: (result["lokiUrl"] as string) || DEFAULT_CONFIG.lokiUrl,
+      defaultLimit: isNaN(defaultLimit) ? DEFAULT_CONFIG.defaultLimit : defaultLimit,
     };
   } catch {
     return { ...DEFAULT_CONFIG };

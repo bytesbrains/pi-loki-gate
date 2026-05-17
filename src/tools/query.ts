@@ -3,6 +3,11 @@ import type { ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { loadConfig } from "../config";
 import { lokiQuery, formatLogOutput } from "../helpers";
 
+/** Escape backticks to prevent LogQL injection via user input. */
+function escapeLogQL(value: string): string {
+  return value.replace(/`/g, '\\`');
+}
+
 // ─── Query Logs ───────────────────────────────────────────────────────────────
 
 export const queryLogsTool = {
@@ -60,7 +65,7 @@ export const jobLogsTool = {
   async execute(_id: string, params: any, _s: any, _u: any, ctx: ExtensionContext) {
     const config = loadConfig(ctx.cwd);
     const limit = params.limit || 200;
-    const query = `{service_name=~"worker|orchestrator"} |= \`${params.jobId}\``;
+    const query = `{service_name=~"worker|orchestrator"} |= \`${escapeLogQL(params.jobId)}\``;
 
     const result = await lokiQuery(config, query, limit);
 
@@ -138,7 +143,7 @@ export const workerLogsTool = {
 
     let query = `{${serviceFilter}}`;
     if (params.search) {
-      query += ` |= \`${params.search}\``;
+      query += ` |= \`${escapeLogQL(params.search)}\``;
     }
 
     const result = await lokiQuery(config, query, limit);
