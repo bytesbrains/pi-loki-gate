@@ -1,6 +1,6 @@
 {
   "name": "@bytesbrains/pi-loki-gate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Loki log gateway for pi agents — query Grafana Loki for container/job/worker logs from the wrok.in AI Factory.",
   "keywords": [
     "pi-package",
