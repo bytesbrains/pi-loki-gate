@@ -75,3 +75,8 @@ loki_worker_logs(container="ai-factory-orchestrator")
 ## License
 
 MIT
+
+---
+
+Built and maintained by [BytesBrains](https://bytesbrains.com) — AI automation & agents, engineered to production standards.
+*The model proposes, code guarantees.*
